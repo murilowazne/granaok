@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GranaOK</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--green:#16a34a;--green-light:#22c55e;--green-pale:#dcfce7;--green-mid:#bbf7d0;--dark:#0f1117;--gray-900:#111827;--gray-700:#374151;--gray-500:#6b7280;--gray-200:#e5e7eb;--gray-100:#f9fafb;--white:#ffffff}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--dark);overflow-x:hidden;line-height:1.6}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 5%;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.06)}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:700;font-size:1.25rem;color:var(--dark);text-decoration:none}
+.logo-icon{width:34px;height:34px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:16px}
+.nav-logo span{color:var(--green)}
+nav .cta-sm{background:var(--green);color:white;border:none;border-radius:50px;padding:10px 22px;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:500;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;text-decoration:none}
+nav .cta-sm:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(22,163,74,0.35)}
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 5% 80px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 60% 40%,rgba(220,252,231,0.6) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--green-pale);color:var(--green);border-radius:50px;padding:6px 14px;font-size:0.82rem;font-weight:600;margin-bottom:24px}
+.badge-dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.3)}}
+h1{font-family:'Sora',sans-serif;font-size:clamp(2.4rem,4.5vw,3.8rem);font-weight:800;line-height:1.1;letter-spacing:-0.03em;color:var(--dark);margin-bottom:20px}
+h1 span{color:var(--green)}
+.hero-sub{font-size:clamp(1rem,1.6vw,1.18rem);color:var(--gray-500);max-width:420px;margin-bottom:36px;line-height:1.7}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--green);color:white;border:none;border-radius:50px;padding:15px 30px;font-size:1rem;font-weight:600;cursor:pointer;transition:all 0.25s;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:8px;box-shadow:0 4px 20px rgba(22,163,74,0.25);text-decoration:none}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(22,163,74,0.4);background:#15803d}
+.btn-secondary{background:transparent;color:var(--dark);border:2px solid var(--gray-200);border-radius:50px;padding:15px 28px;font-size:1rem;font-weight:500;cursor:pointer;transition:all 0.25s;font-family:'DM Sans',sans-serif;text-decoration:none}
+.btn-secondary:hover{border-color:var(--green);color:var(--green)}
+.phone-wrap{display:flex;justify-content:center;align-items:center;position:relative}
+.phone{width:270px;background:var(--dark);border-radius:40px;padding:12px;box-shadow:0 30px 80px rgba(0,0,0,0.22)}
+.phone-notch{width:90px;height:26px;background:var(--dark);border-radius:0 0 18px 18px;margin:0 auto 8px}
+.phone-screen{background:#ece5dd;border-radius:28px;overflow:hidden;min-height:480px}
+.wapp-header{background:#075e54;padding:12px 16px;display:flex;align-items:center;gap:10px;color:white}
+.wapp-avatar{width:36px;height:36px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:18px}
+.wapp-name{font-size:0.88rem;font-weight:600}
+.wapp-status{font-size:0.72rem;opacity:0.85}
+.wapp-msgs{padding:14px 12px;display:flex;flex-direction:column;gap:10px}
+.msg{max-width:82%;padding:8px 12px;font-size:0.8rem;line-height:1.45;border-radius:12px}
+.msg.user{background:#dcf8c6;align-self:flex-end;border-bottom-right-radius:4px;color:#1a1a1a}
+.msg.bot{background:white;align-self:flex-start;border-bottom-left-radius:4px;color:#1a1a1a}
+.msg-time{font-size:0.65rem;color:#888;text-align:right;margin-top:3px}
+.msg.bot .msg-time{text-align:left}
+.typing{background:white;border-radius:12px;border-bottom-left-radius:4px;padding:10px 14px;align-self:flex-start;display:flex;gap:4px;align-items:center}
+.dot{width:6px;height:6px;border-radius:50%;background:#aaa;animation:typing 1.2s infinite}
+.dot:nth-child(2){animation-delay:0.2s}
+.dot:nth-child(3){animation-delay:0.4s}
+@keyframes typing{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
+.float-card{position:absolute;background:white;border-radius:14px;padding:12px 16px;box-shadow:0 8px 30px rgba(0,0,0,0.12);font-size:0.82rem;animation:floatUp 3s ease-in-out infinite}
+.float-card.left{left:-70px;top:30%}
+.float-card.right{right:-70px;bottom:28%}
+@keyframes floatUp{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.fc-label{font-size:0.7rem;color:var(--gray-500);margin-bottom:3px}
+.fc-val{font-weight:700;font-family:'Sora',sans-serif;font-size:1.05rem}
+.fc-val.green{color:var(--green)}
+.fc-val.red{color:#ef4444}
+section{padding:90px 5%}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-label{font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:12px}
+h2{font-family:'Sora',sans-serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;letter-spacing:-0.025em;line-height:1.2;margin-bottom:16px}
+.section-sub{color:var(--gray-500);font-size:1.05rem;max-width:480px;margin-bottom:56px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.step{padding:32px;border-radius:20px;border:1px solid var(--gray-200);transition:all 0.3s;background:white}
+.step:hover{border-color:var(--green-mid);box-shadow:0 8px 30px rgba(22,163,74,0.1);transform:translateY(-3px)}
+.step-num{font-family:'Sora',sans-serif;font-size:0.75rem;font-weight:700;color:var(--green);letter-spacing:0.05em;margin-bottom:16px}
+.step-icon{width:48px;height:48px;background:var(--green-pale);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:20px}
+.step h3{font-family:'Sora',sans-serif;font-size:1.1rem;font-weight:600;margin-bottom:10px;color:var(--dark)}
+.step p{color:var(--gray-500);font-size:0.92rem;line-height:1.6}
+.benefits-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.benefits-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.benefit{display:flex;align-items:flex-start;gap:16px;padding:24px;background:var(--gray-100);border-radius:16px;transition:all 0.25s}
+.benefit:hover{background:var(--green-pale)}
+.benefit-icon{width:42px;height:42px;flex-shrink:0;background:var(--green-pale);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px}
+.benefit h4{font-family:'Sora',sans-serif;font-size:0.95rem;font-weight:600;margin-bottom:5px;color:var(--dark)}
+.benefit p{color:var(--gray-500);font-size:0.87rem;line-height:1.5}
+.chat-section{background:var(--gray-900);color:white}
+.chat-section h2{color:white}
+.chat-section .section-label{color:var(--green-light)}
+.chat-section .section-sub{color:rgba(255,255,255,0.5)}
+.chat-demo-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.chat-window{background:#ece5dd;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+.chat-header{background:#075e54;padding:14px 18px;display:flex;align-items:center;gap:12px;color:white}
+.ch-avatar{width:40px;height:40px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:20px}
+.ch-name{font-weight:600;font-size:0.95rem}
+.ch-status{font-size:0.75rem;opacity:0.8}
+.chat-body{padding:18px;display:flex;flex-direction:column;gap:10px;min-height:300px}
+.cm{max-width:85%;padding:10px 14px;border-radius:14px;font-size:0.88rem;line-height:1.5}
+.cm.user{background:#dcf8c6;align-self:flex-end;border-bottom-right-radius:4px;color:#1a1a1a}
+.cm.bot{background:white;align-self:flex-start;border-bottom-left-radius:4px;color:#1a1a1a}
+.cm-time{font-size:0.67rem;color:#888;margin-top:3px;text-align:right}
+.cm.bot .cm-time{text-align:left}
+.chat-input-row{background:#f0f0f0;padding:10px 14px;display:flex;align-items:center;gap:8px}
+.chat-input-fake{flex:1;background:white;border-radius:20px;padding:8px 14px;font-size:0.85rem;color:#aaa}
+.chat-send{width:36px;height:36px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:16px}
+.chat-text-col h3{font-family:'Sora',sans-serif;font-size:1.4rem;font-weight:600;color:white;margin-bottom:14px}
+.chat-text-col p{color:rgba(255,255,255,0.55);font-size:0.95rem;line-height:1.7;margin-bottom:24px}
+.feature-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+.feature-list li{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,0.8);font-size:0.92rem}
+.feature-list li::before{content:'✓';width:22px;height:22px;background:rgba(22,163,74,0.2);border-radius:50%;color:var(--green-light);font-size:0.75rem;flex-shrink:0;text-align:center;line-height:22px}
+.simulator-box{background:white;border-radius:24px;padding:48px;max-width:620px;margin:0 auto;box-shadow:0 4px 40px rgba(0,0,0,0.08);border:1px solid var(--gray-200)}
+.sim-label{font-size:0.82rem;color:var(--gray-500);margin-bottom:8px;font-weight:500}
+.sim-input-row{display:flex;align-items:center;border:2px solid var(--gray-200);border-radius:14px;overflow:hidden;margin-bottom:24px;transition:border-color 0.2s}
+.sim-input-row:focus-within{border-color:var(--green)}
+.sim-prefix{padding:14px 16px;background:var(--gray-100);font-weight:600;color:var(--gray-500);font-size:1rem;border-right:2px solid var(--gray-200)}
+#sim-input{flex:1;border:none;outline:none;padding:14px 16px;font-size:1rem;font-family:'DM Sans',sans-serif;color:var(--dark);background:white}
+.sim-btn{background:var(--green);color:white;border:none;border-radius:12px;padding:14px 28px;font-size:0.95rem;font-weight:600;cursor:pointer;width:100%;font-family:'DM Sans',sans-serif;transition:all 0.2s;margin-top:4px}
+.sim-btn:hover{background:#15803d;box-shadow:0 4px 16px rgba(22,163,74,0.3)}
+.sim-result{margin-top:24px;background:var(--green-pale);border-radius:14px;padding:20px 24px;display:none;align-items:center;gap:16px}
+.sim-result.show{display:flex}
+.sim-result-icon{font-size:28px}
+.sim-result-text{font-size:0.95rem;color:var(--gray-700);line-height:1.5}
+.sim-result-text strong{color:var(--green);font-size:1.05rem}
+.sim-slider{width:100%;margin-bottom:8px;accent-color:var(--green)}
+.sim-range-labels{display:flex;justify-content:space-between;font-size:0.78rem;color:var(--gray-500);margin-bottom:20px}
+.final-cta{background:linear-gradient(135deg,#15803d 0%,#16a34a 50%,#22c55e 100%);color:white;text-align:center;padding:100px 5%;position:relative;overflow:hidden}
+.final-cta-inner{position:relative;max-width:600px;margin:0 auto}
+.final-cta h2{color:white;font-size:clamp(2rem,3.5vw,3rem);margin-bottom:16px}
+.final-cta p{color:rgba(255,255,255,0.75);font-size:1.1rem;margin-bottom:36px}
+.btn-white{background:white;color:var(--green);border:none;border-radius:50px;padding:16px 36px;font-size:1rem;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.25s;display:inline-flex;align-items:center;gap:10px;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,0.15)}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,0.2)}
+footer{background:var(--dark);color:rgba(255,255,255,0.5);text-align:center;padding:36px 5%}
+.footer-logo{font-family:'Sora',sans-serif;font-size:1.3rem;font-weight:700;color:white;margin-bottom:6px}
+.footer-logo span{color:var(--green)}
+.footer-tagline{font-size:0.88rem;margin-bottom:20px}
+.footer-bottom{font-size:0.8rem;border-top:1px solid rgba(255,255,255,0.08);padding-top:20px;margin-top:16px}
+.fade-up{opacity:0;transform:translateY(24px);animation:fadeUp 0.7s forwards}
+.fade-up.d1{animation-delay:0.1s}.fade-up.d2{animation-delay:0.25s}.fade-up.d3{animation-delay:0.4s}.fade-up.d4{animation-delay:0.55s}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+@media(max-width:900px){.hero-inner,.chat-demo-inner,.benefits-inner{grid-template-columns:1fr}.phone-wrap{display:none}.steps{grid-template-columns:1fr}.benefits-grid{grid-template-columns:1fr}.float-card{display:none}.hero{padding-top:100px}}
+@media(max-width:600px){section{padding:64px 5%}.simulator-box{padding:28px 20px}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="#" class="nav-logo"><div class="logo-icon">✓</div>Grana<span>OK</span></a>
+  <a href="#cta" class="cta-sm">Começar grátis</a>
+</nav>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="badge fade-up d1"><span class="badge-dot"></span> 100% pelo WhatsApp</div>
+      <h1 class="fade-up d2">Sua grana,<br><span>tudo OK.</span></h1>
+      <p class="hero-sub fade-up d3">Controle seu dinheiro direto pelo WhatsApp, sem planilhas, sem complicação.</p>
+      <div class="hero-ctas fade-up d4">
+        <a href="#cta" class="btn-primary"><span>💬</span> Começar grátis</a>
+        <a href="#como-funciona" class="btn-secondary">Ver como funciona</a>
+      </div>
+    </div>
+    <div class="phone-wrap fade-up d3">
+      <div class="float-card left"><div class="fc-label">Saldo do mês</div><div class="fc-val green">R$ 580</div></div>
+      <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="wapp-header"><div class="wapp-avatar">💰</div><div class="wapp-info"><div class="wapp-name">GranaOK</div><div class="wapp-status">● online</div></div></div>
+          <div class="wapp-msgs">
+            <div class="msg bot">Olá! 👋 Sou o GranaOK. Me diga seus gastos e eu cuido do resto!<div class="msg-time">09:01</div></div>
+            <div class="msg user">Comprei lanche 25 reais<div class="msg-time">09:03</div></div>
+            <div class="msg bot">✅ Registrado! Você ainda tem <strong>R$580 disponíveis</strong> esse mês. Tudo OK 👍<div class="msg-time">09:03</div></div>
+            <div class="msg user">Posso comprar um tênis de R$200?<div class="msg-time">09:05</div></div>
+            <div class="typing"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="float-card right"><div class="fc-label">Gastos hoje</div><div class="fc-val red">- R$ 25</div></div>
+    </div>
+  </div>
+</section>
+<section id="como-funciona" style="background:var(--gray-100)">
+  <div class="section-inner">
+    <div class="section-label">Como funciona</div>
+    <h2>Três passos. Sem complicação.</h2>
+    <p class="section-sub">Em menos de 2 minutos você já está controlando seu dinheiro.</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">01 / CADASTRO</div><div class="step-icon">💵</div><h3>Cadastre sua renda</h3><p>Informe quanto você recebe por mês. O GranaOK organiza tudo automaticamente.</p></div>
+      <div class="step"><div class="step-num">02 / GASTOS</div><div class="step-icon">💬</div><h3>Envie seus gastos pelo WhatsApp</h3><p>É só mandar uma mensagem: "gastei 40 no mercado". Simples assim.</p></div>
+      <div class="step"><div class="step-num">03 / ANÁLISE</div><div class="step-icon">📊</div><h3>Receba análises automáticas</h3><p>Saiba na hora quanto ainda tem disponível e evite surpresas no fim do mês.</p></div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="section-inner">
+    <div class="benefits-inner">
+      <div class="benefits-text"><div class="section-label">Benefícios</div><h2>Feito pra quem não gosta de planilha.</h2><p class="section-sub" style="margin-bottom:0">Sem fórmulas, sem apps complicados. Só você e o WhatsApp.</p></div>
+      <div class="benefits-grid">
+        <div class="benefit"><div class="benefit-icon">🚫</div><div><h4>Sem planilhas</h4><p>Nada de Excel ou Google Sheets. Tudo pelo zap.</p></div></div>
+        <div class="benefit"><div class="benefit-icon">💬</div><div><h4>Funciona no WhatsApp</h4><p>Você já usa todos os dias. Não precisa aprender nada novo.</p></div></div>
+        <div class="benefit"><div class="benefit-icon">🛡️</div><div><h4>Evita dívidas</h4><p>Receba alertas antes de gastar demais.</p></div></div>
+        <div class="benefit"><div class="benefit-icon">⚡</div><div><h4>Simples e rápido</h4><p>Registrar um gasto leva menos de 5 segundos.</p></div></div>
+        <div class="benefit"><div class="benefit-icon">🔮</div><div><h4>Simule antes de comprar</h4><p>Pergunte se pode comprar algo. O GranaOK te diz se vale a pena.</p></div></div>
+        <div class="benefit"><div class="benefit-icon">🎯</div><div><h4>Metas financeiras</h4><p>Defina objetivos e acompanhe seu progresso pelo chat.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="chat-section">
+  <div class="section-inner">
+    <div class="chat-demo-inner">
+      <div class="chat-window">
+        <div class="chat-header"><div class="ch-avatar">💰</div><div><div class="ch-name">GranaOK</div><div class="ch-status">● online agora</div></div></div>
+        <div class="chat-body">
+          <div class="cm user">Oi! Quanto tenho de saldo?<div class="cm-time">14:22</div></div>
+          <div class="cm bot">💰 Seu saldo atual é <strong>R$780</strong>. Você já gastou R$220 esse mês. Ótimo ritmo!<div class="cm-time">14:22</div></div>
+          <div class="cm user">Comprei lanche 25 reais<div class="cm-time">14:35</div></div>
+          <div class="cm bot">✅ Anotado! Você ainda tem <strong>R$580 disponíveis</strong> esse mês. Tudo OK 👍<div class="cm-time">14:35</div></div>
+          <div class="cm user">Posso comprar um tênis de R$200?<div class="cm-time">14:40</div></div>
+          <div class="cm bot">🤔 Se comprar agora, vai ficar com R$380. Ainda dá, mas você tem 18 dias até o mês acabar. Vai com calma! 😊<div class="cm-time">14:40</div></div>
+        </div>
+        <div class="chat-input-row"><div class="chat-input-fake">Manda uma mensagem...</div><div class="chat-send">➤</div></div>
+      </div>
+      <div class="chat-text-col">
+        <div class="section-label" style="color:var(--green-light)">Chat ao vivo</div>
+        <h3>Fale com o dinheiro como você fala com um amigo.</h3>
+        <p>Sem menus, sem formulários. Só manda uma mensagem e pronto.</p>
+        <ul class="feature-list">
+          <li>Linguagem natural — sem termos técnicos</li>
+          <li>Resposta instantânea no WhatsApp</li>
+          <li>Funciona 24 horas por dia</li>
+          <li>Histórico completo dos seus gastos</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="simulador" style="background:var(--gray-100)">
+  <div class="section-inner" style="text-align:center">
+    <div class="section-label">Simulador</div>
+    <h2>E se eu gastar agora?</h2>
+    <p class="section-sub" style="margin:0 auto 48px">Simule uma compra e veja o impacto no seu orçamento.</p>
+    <div class="simulator-box">
+      <div class="sim-label">Quanto você pensa em gastar?</div>
+      <input type="range" class="sim-slider" id="sim-slider" min="0" max="1000" value="300" oninput="updateSim(this.value)">
+      <div class="sim-range-labels"><span>R$ 0</span><span>R$ 500</span><span>R$ 1.000</span></div>
+      <div class="sim-label">Ou digita o valor:</div>
+      <div class="sim-input-row"><div class="sim-prefix">R$</div><input type="number" id="sim-input" placeholder="ex: 300" value="300" oninput="updateSlider(this.value)"></div>
+      <button class="sim-btn" onclick="calcSim()">Simular agora</button>
+      <div class="sim-result" id="sim-result"><div class="sim-result-icon">📊</div><div class="sim-result-text" id="sim-text"></div></div>
+    </div>
+  </div>
+</section>
+<section id="cta" class="final-cta">
+  <div class="final-cta-inner">
+    <h2>Comece a controlar sua vida financeira hoje.</h2>
+    <p>É grátis, rápido e funciona direto no WhatsApp. Sem instalar nada.</p>
+    <a href="#" class="btn-white"><span>💬</span> Começar grátis no WhatsApp</a>
+  </div>
+</section>
+<footer>
+  <div class="footer-logo">Grana<span>OK</span></div>
+  <div class="footer-tagline">Seu dinheiro sob controle.</div>
+  <div class="footer-bottom">© 2025 GranaOK. Feito com 💚 para quem quer mais do dinheiro.</div>
+</footer>
+<script>
+const RENDA=1000,GASTOS_ATUAIS=245;
+function updateSim(v){document.getElementById('sim-input').value=v;document.getElementById('sim-result').classList.remove('show')}
+function updateSlider(v){document.getElementById('sim-slider').value=Math.min(1000,Math.max(0,parseInt(v)||0));document.getElementById('sim-result').classList.remove('show')}
+function calcSim(){
+  const g=parseInt(document.getElementById('sim-input').value)||0;
+  const r=RENDA-GASTOS_ATUAIS-g;
+  const el=document.getElementById('sim-result');
+  const txt=document.getElementById('sim-text');
+  if(g<=0){txt.innerHTML='Digite um valor para simular. 😊'}
+  else if(r>=300){txt.innerHTML=`Se gastar <strong>R$${g}</strong>, vão sobrar <strong style="color:var(--green)">R$${r}</strong> até o fim do mês. Tudo OK! ✅`}
+  else if(r>=0){txt.innerHTML=`Se gastar <strong>R$${g}</strong>, vai ficar com só <strong style="color:#f59e0b">R$${r}</strong>. Vale a pena? 🤔`}
+  else{txt.innerHTML=`Cuidado! Gastar <strong>R$${g}</strong> vai deixar você <strong style="color:#ef4444">R$${Math.abs(r)} no negativo</strong>. 🚨`}
+  el.classList.add('show');
+}
+</script>
+</body>
+</html>
