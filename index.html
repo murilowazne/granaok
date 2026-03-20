@@ -7,17 +7,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--green:#16a34a;--green-light:#22c55e;--green-pale:#dcfce7;--green-mid:#bbf7d0;--dark:#0f1117;--gray-900:#111827;--gray-700:#374151;--gray-500:#6b7280;--gray-200:#e5e7eb;--gray-100:#f9fafb;--white:#ffffff}
+:root{
+  --green:#16a34a;--green-light:#22c55e;--green-pale:#dcfce7;--green-mid:#bbf7d0;
+  --dark:#0f1117;--gray-900:#111827;--gray-700:#374151;--gray-500:#6b7280;
+  --gray-200:#e5e7eb;--gray-100:#f0ede8;--offwhite:#faf8f5;--white:#fdfcfa;
+}
 html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--dark);overflow-x:hidden;line-height:1.6}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 5%;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.06)}
+body{font-family:'DM Sans',sans-serif;background:var(--offwhite);color:var(--dark);overflow-x:hidden;line-height:1.6}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 5%;background:rgba(250,248,245,0.93);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.06)}
 .nav-logo{display:flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:700;font-size:1.25rem;color:var(--dark);text-decoration:none}
 .logo-icon{width:34px;height:34px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:16px}
 .nav-logo span{color:var(--green)}
 nav .cta-sm{background:var(--green);color:white;border:none;border-radius:50px;padding:10px 22px;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:500;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;text-decoration:none}
 nav .cta-sm:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(22,163,74,0.35)}
-.hero{min-height:100vh;display:flex;align-items:center;padding:120px 5% 80px;position:relative;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 60% 40%,rgba(220,252,231,0.6) 0%,transparent 70%);pointer-events:none}
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 5% 80px;position:relative;overflow:hidden;background:var(--offwhite)}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 60% 40%,rgba(220,252,231,0.5) 0%,transparent 70%);pointer-events:none}
 .hero-inner{max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
 .badge{display:inline-flex;align-items:center;gap:8px;background:var(--green-pale);color:var(--green);border-radius:50px;padding:6px 14px;font-size:0.82rem;font-weight:600;margin-bottom:24px}
 .badge-dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
@@ -36,8 +40,7 @@ h1 span{color:var(--green)}
 .phone-screen{background:#ece5dd;border-radius:28px;overflow:hidden;min-height:480px}
 .wapp-header{background:#075e54;padding:12px 16px;display:flex;align-items:center;gap:10px;color:white}
 .wapp-avatar{width:36px;height:36px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:18px}
-.wapp-name{font-size:0.88rem;font-weight:600}
-.wapp-status{font-size:0.72rem;opacity:0.85}
+.wapp-name{font-size:0.88rem;font-weight:600}.wapp-status{font-size:0.72rem;opacity:0.85}
 .wapp-msgs{padding:14px 12px;display:flex;flex-direction:column;gap:10px}
 .msg{max-width:82%;padding:8px 12px;font-size:0.8rem;line-height:1.45;border-radius:12px}
 .msg.user{background:#dcf8c6;align-self:flex-end;border-bottom-right-radius:4px;color:#1a1a1a}
@@ -46,24 +49,21 @@ h1 span{color:var(--green)}
 .msg.bot .msg-time{text-align:left}
 .typing{background:white;border-radius:12px;border-bottom-left-radius:4px;padding:10px 14px;align-self:flex-start;display:flex;gap:4px;align-items:center}
 .dot{width:6px;height:6px;border-radius:50%;background:#aaa;animation:typing 1.2s infinite}
-.dot:nth-child(2){animation-delay:0.2s}
-.dot:nth-child(3){animation-delay:0.4s}
+.dot:nth-child(2){animation-delay:0.2s}.dot:nth-child(3){animation-delay:0.4s}
 @keyframes typing{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
-.float-card{position:absolute;background:white;border-radius:14px;padding:12px 16px;box-shadow:0 8px 30px rgba(0,0,0,0.12);font-size:0.82rem;animation:floatUp 3s ease-in-out infinite}
-.float-card.left{left:-70px;top:30%}
-.float-card.right{right:-70px;bottom:28%}
+.float-card{position:absolute;background:var(--white);border-radius:14px;padding:12px 16px;box-shadow:0 8px 30px rgba(0,0,0,0.1);font-size:0.82rem;animation:floatUp 3s ease-in-out infinite;border:1px solid var(--gray-200)}
+.float-card.left{left:-70px;top:30%}.float-card.right{right:-70px;bottom:28%}
 @keyframes floatUp{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 .fc-label{font-size:0.7rem;color:var(--gray-500);margin-bottom:3px}
 .fc-val{font-weight:700;font-family:'Sora',sans-serif;font-size:1.05rem}
-.fc-val.green{color:var(--green)}
-.fc-val.red{color:#ef4444}
+.fc-val.green{color:var(--green)}.fc-val.red{color:#ef4444}
 section{padding:90px 5%}
 .section-inner{max-width:1100px;margin:0 auto}
 .section-label{font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:12px}
 h2{font-family:'Sora',sans-serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;letter-spacing:-0.025em;line-height:1.2;margin-bottom:16px}
 .section-sub{color:var(--gray-500);font-size:1.05rem;max-width:480px;margin-bottom:56px}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
-.step{padding:32px;border-radius:20px;border:1px solid var(--gray-200);transition:all 0.3s;background:white}
+.step{padding:32px;border-radius:20px;border:1px solid var(--gray-200);transition:all 0.3s;background:var(--white)}
 .step:hover{border-color:var(--green-mid);box-shadow:0 8px 30px rgba(22,163,74,0.1);transform:translateY(-3px)}
 .step-num{font-family:'Sora',sans-serif;font-size:0.75rem;font-weight:700;color:var(--green);letter-spacing:0.05em;margin-bottom:16px}
 .step-icon{width:48px;height:48px;background:var(--green-pale);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:20px}
@@ -84,8 +84,7 @@ h2{font-family:'Sora',sans-serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:
 .chat-window{background:#ece5dd;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
 .chat-header{background:#075e54;padding:14px 18px;display:flex;align-items:center;gap:12px;color:white}
 .ch-avatar{width:40px;height:40px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:20px}
-.ch-name{font-weight:600;font-size:0.95rem}
-.ch-status{font-size:0.75rem;opacity:0.8}
+.ch-name{font-weight:600;font-size:0.95rem}.ch-status{font-size:0.75rem;opacity:0.8}
 .chat-body{padding:18px;display:flex;flex-direction:column;gap:10px;min-height:300px}
 .cm{max-width:85%;padding:10px 14px;border-radius:14px;font-size:0.88rem;line-height:1.5}
 .cm.user{background:#dcf8c6;align-self:flex-end;border-bottom-right-radius:4px;color:#1a1a1a}
@@ -100,21 +99,34 @@ h2{font-family:'Sora',sans-serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:
 .feature-list{list-style:none;display:flex;flex-direction:column;gap:12px}
 .feature-list li{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,0.8);font-size:0.92rem}
 .feature-list li::before{content:'✓';width:22px;height:22px;background:rgba(22,163,74,0.2);border-radius:50%;color:var(--green-light);font-size:0.75rem;flex-shrink:0;text-align:center;line-height:22px}
-.simulator-box{background:white;border-radius:24px;padding:48px;max-width:620px;margin:0 auto;box-shadow:0 4px 40px rgba(0,0,0,0.08);border:1px solid var(--gray-200)}
-.sim-label{font-size:0.82rem;color:var(--gray-500);margin-bottom:8px;font-weight:500}
-.sim-input-row{display:flex;align-items:center;border:2px solid var(--gray-200);border-radius:14px;overflow:hidden;margin-bottom:24px;transition:border-color 0.2s}
-.sim-input-row:focus-within{border-color:var(--green)}
-.sim-prefix{padding:14px 16px;background:var(--gray-100);font-weight:600;color:var(--gray-500);font-size:1rem;border-right:2px solid var(--gray-200)}
-#sim-input{flex:1;border:none;outline:none;padding:14px 16px;font-size:1rem;font-family:'DM Sans',sans-serif;color:var(--dark);background:white}
-.sim-btn{background:var(--green);color:white;border:none;border-radius:12px;padding:14px 28px;font-size:0.95rem;font-weight:600;cursor:pointer;width:100%;font-family:'DM Sans',sans-serif;transition:all 0.2s;margin-top:4px}
-.sim-btn:hover{background:#15803d;box-shadow:0 4px 16px rgba(22,163,74,0.3)}
-.sim-result{margin-top:24px;background:var(--green-pale);border-radius:14px;padding:20px 24px;display:none;align-items:center;gap:16px}
+.simulator-section{background:var(--offwhite)}
+.simulator-box{background:var(--white);border-radius:24px;padding:48px;max-width:680px;margin:0 auto;box-shadow:0 4px 40px rgba(0,0,0,0.06);border:1px solid var(--gray-200)}
+.sim-fields{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.sim-field label{display:block;font-size:0.8rem;font-weight:600;color:var(--gray-500);margin-bottom:6px;letter-spacing:0.03em;text-transform:uppercase}
+.sim-input-wrap{display:flex;align-items:center;border:2px solid var(--gray-200);border-radius:12px;overflow:hidden;transition:border-color 0.2s;background:white}
+.sim-input-wrap:focus-within{border-color:var(--green)}
+.sim-prefix{padding:12px 14px;background:var(--gray-100);font-weight:600;color:var(--gray-500);font-size:0.95rem;border-right:1px solid var(--gray-200);white-space:nowrap}
+.sim-input-wrap input{flex:1;border:none;outline:none;padding:12px 14px;font-size:1rem;font-family:'DM Sans',sans-serif;color:var(--dark);background:white;width:100%}
+.sim-btn{background:var(--dark);color:white;border:none;border-radius:12px;padding:14px 28px;font-size:1rem;font-weight:600;cursor:pointer;width:100%;font-family:'DM Sans',sans-serif;transition:all 0.2s;margin-top:8px}
+.sim-btn:hover{background:#374151;box-shadow:0 4px 16px rgba(0,0,0,0.2)}
+.sim-result{margin-top:24px;border-radius:16px;padding:24px;display:none;gap:16px;align-items:flex-start}
 .sim-result.show{display:flex}
-.sim-result-icon{font-size:28px}
-.sim-result-text{font-size:0.95rem;color:var(--gray-700);line-height:1.5}
-.sim-result-text strong{color:var(--green);font-size:1.05rem}
-.sim-slider{width:100%;margin-bottom:8px;accent-color:var(--green)}
-.sim-range-labels{display:flex;justify-content:space-between;font-size:0.78rem;color:var(--gray-500);margin-bottom:20px}
+.sim-result.ok{background:#f0fdf4;border:1px solid #bbf7d0}
+.sim-result.warn{background:#fffbeb;border:1px solid #fde68a}
+.sim-result.danger{background:#fef2f2;border:1px solid #fecaca}
+.sim-result-icon{font-size:28px;flex-shrink:0}
+.sim-result-title{font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;margin-bottom:4px}
+.sim-result.ok .sim-result-title{color:#15803d}
+.sim-result.warn .sim-result-title{color:#b45309}
+.sim-result.danger .sim-result-title{color:#b91c1c}
+.sim-result-text{font-size:0.9rem;color:var(--gray-700);line-height:1.6}
+.sim-bars{margin-top:16px;display:flex;flex-direction:column;gap:8px;width:100%}
+.sim-bar-label{display:flex;justify-content:space-between;font-size:0.78rem;color:var(--gray-500);margin-bottom:3px}
+.sim-bar-track{height:8px;background:var(--gray-200);border-radius:50px;overflow:hidden}
+.sim-bar-fill{height:100%;border-radius:50px;transition:width 0.5s ease}
+.sim-bar-fill.green{background:var(--green)}
+.sim-bar-fill.amber{background:#f59e0b}
+.sim-bar-fill.red{background:#ef4444}
 .final-cta{background:linear-gradient(135deg,#15803d 0%,#16a34a 50%,#22c55e 100%);color:white;text-align:center;padding:100px 5%;position:relative;overflow:hidden}
 .final-cta-inner{position:relative;max-width:600px;margin:0 auto}
 .final-cta h2{color:white;font-size:clamp(2rem,3.5vw,3rem);margin-bottom:16px}
@@ -129,7 +141,7 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);text-align:center;padd
 .fade-up{opacity:0;transform:translateY(24px);animation:fadeUp 0.7s forwards}
 .fade-up.d1{animation-delay:0.1s}.fade-up.d2{animation-delay:0.25s}.fade-up.d3{animation-delay:0.4s}.fade-up.d4{animation-delay:0.55s}
 @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
-@media(max-width:900px){.hero-inner,.chat-demo-inner,.benefits-inner{grid-template-columns:1fr}.phone-wrap{display:none}.steps{grid-template-columns:1fr}.benefits-grid{grid-template-columns:1fr}.float-card{display:none}.hero{padding-top:100px}}
+@media(max-width:900px){.hero-inner,.chat-demo-inner,.benefits-inner{grid-template-columns:1fr}.phone-wrap{display:none}.steps{grid-template-columns:1fr}.benefits-grid{grid-template-columns:1fr}.float-card{display:none}.hero{padding-top:100px}.sim-fields{grid-template-columns:1fr}}
 @media(max-width:600px){section{padding:64px 5%}.simulator-box{padding:28px 20px}}
 </style>
 </head>
@@ -157,9 +169,9 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);text-align:center;padd
         <div class="phone-screen">
           <div class="wapp-header"><div class="wapp-avatar">💰</div><div class="wapp-info"><div class="wapp-name">GranaOK</div><div class="wapp-status">● online</div></div></div>
           <div class="wapp-msgs">
-            <div class="msg bot">Olá! 👋 Sou o GranaOK. Me diga seus gastos e eu cuido do resto!<div class="msg-time">09:01</div></div>
+            <div class="msg bot">Olá! 👋 Me diga seus gastos e eu cuido do resto!<div class="msg-time">09:01</div></div>
             <div class="msg user">Comprei lanche 25 reais<div class="msg-time">09:03</div></div>
-            <div class="msg bot">✅ Registrado! Você ainda tem <strong>R$580 disponíveis</strong> esse mês. Tudo OK 👍<div class="msg-time">09:03</div></div>
+            <div class="msg bot">✅ Registrado! Você ainda tem <strong>R$580</strong> esse mês. Tudo OK 👍<div class="msg-time">09:03</div></div>
             <div class="msg user">Posso comprar um tênis de R$200?<div class="msg-time">09:05</div></div>
             <div class="typing"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
           </div>
@@ -203,11 +215,11 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);text-align:center;padd
         <div class="chat-header"><div class="ch-avatar">💰</div><div><div class="ch-name">GranaOK</div><div class="ch-status">● online agora</div></div></div>
         <div class="chat-body">
           <div class="cm user">Oi! Quanto tenho de saldo?<div class="cm-time">14:22</div></div>
-          <div class="cm bot">💰 Seu saldo atual é <strong>R$780</strong>. Você já gastou R$220 esse mês. Ótimo ritmo!<div class="cm-time">14:22</div></div>
+          <div class="cm bot">💰 Seu saldo é <strong>R$780</strong>. Você gastou R$220 esse mês. Ótimo ritmo!<div class="cm-time">14:22</div></div>
           <div class="cm user">Comprei lanche 25 reais<div class="cm-time">14:35</div></div>
-          <div class="cm bot">✅ Anotado! Você ainda tem <strong>R$580 disponíveis</strong> esse mês. Tudo OK 👍<div class="cm-time">14:35</div></div>
+          <div class="cm bot">✅ Anotado! Você ainda tem <strong>R$580</strong> esse mês. Tudo OK 👍<div class="cm-time">14:35</div></div>
           <div class="cm user">Posso comprar um tênis de R$200?<div class="cm-time">14:40</div></div>
-          <div class="cm bot">🤔 Se comprar agora, vai ficar com R$380. Ainda dá, mas você tem 18 dias até o mês acabar. Vai com calma! 😊<div class="cm-time">14:40</div></div>
+          <div class="cm bot">🤔 Se comprar, vai ficar com R$380. Ainda dá, mas faltam 18 dias. Vai com calma! 😊<div class="cm-time">14:40</div></div>
         </div>
         <div class="chat-input-row"><div class="chat-input-fake">Manda uma mensagem...</div><div class="chat-send">➤</div></div>
       </div>
@@ -225,19 +237,35 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);text-align:center;padd
     </div>
   </div>
 </section>
-<section id="simulador" style="background:var(--gray-100)">
+<section id="simulador" class="simulator-section">
   <div class="section-inner" style="text-align:center">
     <div class="section-label">Simulador</div>
-    <h2>E se eu gastar agora?</h2>
-    <p class="section-sub" style="margin:0 auto 48px">Simule uma compra e veja o impacto no seu orçamento.</p>
+    <h2>Faz falta se eu gastar agora?</h2>
+    <p class="section-sub" style="margin:0 auto 48px">Coloca seus dados e descubra o impacto antes de decidir.</p>
     <div class="simulator-box">
-      <div class="sim-label">Quanto você pensa em gastar?</div>
-      <input type="range" class="sim-slider" id="sim-slider" min="0" max="1000" value="300" oninput="updateSim(this.value)">
-      <div class="sim-range-labels"><span>R$ 0</span><span>R$ 500</span><span>R$ 1.000</span></div>
-      <div class="sim-label">Ou digita o valor:</div>
-      <div class="sim-input-row"><div class="sim-prefix">R$</div><input type="number" id="sim-input" placeholder="ex: 300" value="300" oninput="updateSlider(this.value)"></div>
+      <div class="sim-fields">
+        <div class="sim-field">
+          <label>Minha renda mensal</label>
+          <div class="sim-input-wrap"><div class="sim-prefix">R$</div><input type="number" id="renda" placeholder="ex: 2000" min="0"></div>
+        </div>
+        <div class="sim-field">
+          <label>Já gastei este mês</label>
+          <div class="sim-input-wrap"><div class="sim-prefix">R$</div><input type="number" id="gastos" placeholder="ex: 800" min="0"></div>
+        </div>
+        <div class="sim-field" style="grid-column:1/-1">
+          <label>Quero gastar agora</label>
+          <div class="sim-input-wrap"><div class="sim-prefix">R$</div><input type="number" id="compra" placeholder="ex: 300" min="0"></div>
+        </div>
+      </div>
       <button class="sim-btn" onclick="calcSim()">Simular agora</button>
-      <div class="sim-result" id="sim-result"><div class="sim-result-icon">📊</div><div class="sim-result-text" id="sim-text"></div></div>
+      <div class="sim-result" id="sim-result">
+        <div class="sim-result-icon" id="sim-icon"></div>
+        <div style="flex:1">
+          <div class="sim-result-title" id="sim-title"></div>
+          <div class="sim-result-text" id="sim-text"></div>
+          <div class="sim-bars" id="sim-bars"></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -254,19 +282,42 @@ footer{background:var(--dark);color:rgba(255,255,255,0.5);text-align:center;padd
   <div class="footer-bottom">© 2025 GranaOK. Feito com 💚 para quem quer mais do dinheiro.</div>
 </footer>
 <script>
-const RENDA=1000,GASTOS_ATUAIS=245;
-function updateSim(v){document.getElementById('sim-input').value=v;document.getElementById('sim-result').classList.remove('show')}
-function updateSlider(v){document.getElementById('sim-slider').value=Math.min(1000,Math.max(0,parseInt(v)||0));document.getElementById('sim-result').classList.remove('show')}
 function calcSim(){
-  const g=parseInt(document.getElementById('sim-input').value)||0;
-  const r=RENDA-GASTOS_ATUAIS-g;
+  const renda=parseFloat(document.getElementById('renda').value)||0;
+  const gastos=parseFloat(document.getElementById('gastos').value)||0;
+  const compra=parseFloat(document.getElementById('compra').value)||0;
   const el=document.getElementById('sim-result');
+  const icon=document.getElementById('sim-icon');
+  const title=document.getElementById('sim-title');
   const txt=document.getElementById('sim-text');
-  if(g<=0){txt.innerHTML='Digite um valor para simular. 😊'}
-  else if(r>=300){txt.innerHTML=`Se gastar <strong>R$${g}</strong>, vão sobrar <strong style="color:var(--green)">R$${r}</strong> até o fim do mês. Tudo OK! ✅`}
-  else if(r>=0){txt.innerHTML=`Se gastar <strong>R$${g}</strong>, vai ficar com só <strong style="color:#f59e0b">R$${r}</strong>. Vale a pena? 🤔`}
-  else{txt.innerHTML=`Cuidado! Gastar <strong>R$${g}</strong> vai deixar você <strong style="color:#ef4444">R$${Math.abs(r)} no negativo</strong>. 🚨`}
-  el.classList.add('show');
+  const bars=document.getElementById('sim-bars');
+  if(!renda||!compra){
+    el.className='sim-result warn show';
+    icon.textContent='⚠️';title.textContent='Preencha os campos';
+    txt.textContent='Informe sua renda e o valor que quer gastar para simular.';
+    bars.innerHTML='';return;
+  }
+  const saldoAtual=renda-gastos;
+  const saldoApos=saldoAtual-compra;
+  const pctGasto=Math.min(100,Math.round(((gastos+compra)/renda)*100));
+  const pctSobra=Math.max(0,100-pctGasto);
+  let barColor='green';
+  if(pctGasto>70)barColor='amber';
+  if(pctGasto>90)barColor='red';
+  bars.innerHTML=`<div><div class="sim-bar-label"><span>Comprometido da renda</span><span>${pctGasto}%</span></div><div class="sim-bar-track"><div class="sim-bar-fill ${barColor}" style="width:${pctGasto}%"></div></div></div><div><div class="sim-bar-label"><span>Vai sobrar</span><span>R$ ${Math.max(0,saldoApos).toFixed(0)}</span></div><div class="sim-bar-track"><div class="sim-bar-fill green" style="width:${pctSobra}%"></div></div></div>`;
+  if(saldoApos>=renda*0.2){
+    el.className='sim-result ok show';icon.textContent='✅';
+    title.textContent='Pode ir com tranquilidade!';
+    txt.textContent=`Após gastar R$${compra.toFixed(0)}, você vai ficar com R$${saldoApos.toFixed(0)} até o fim do mês. Tudo dentro do controle.`;
+  }else if(saldoApos>=0){
+    el.className='sim-result warn show';icon.textContent='⚠️';
+    title.textContent='Dá, mas vai com cuidado.';
+    txt.textContent=`Você vai ficar com só R$${saldoApos.toFixed(0)} até o fim do mês. Vale a pena? Pense se não tem coisa mais urgente.`;
+  }else{
+    el.className='sim-result danger show';icon.textContent='🚨';
+    title.textContent='Não recomendo agora.';
+    txt.textContent=`Esse gasto vai deixar você R$${Math.abs(saldoApos).toFixed(0)} no negativo. Melhor esperar o próximo mês.`;
+  }
 }
 </script>
 </body>
