@@ -62,6 +62,7 @@ app.post('/mensagem', (req, res) => {
 })
 
 // Liga o servidor na porta 3000
-app.listen(3000, () => {
-  console.log('✅ Servidor GranaOK rodando em http://localhost:3000')
+const PORT = process.env.PORT || 3000
+app.listen(PORT, () => {
+  console.log(`✅ Servidor GranaOK rodando na porta ${PORT}`)
 })
